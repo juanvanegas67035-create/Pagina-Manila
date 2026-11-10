@@ -1,0 +1,24 @@
+:root {
+  --manila-bg-darkest: #170000;
+  --manila-bg-card: #350A06;
+  --manila-border-accent: #56070C;
+}
+
+.text-warning {
+  color: #efd4da !important;
+}
+
+.border-warning,
+.border-secondary {
+  border-color: #a50808 !important;
+}
+
+/* Fondos y Badges */
+.bg-dark {
+  background-color: #2a0e0e !important;
+}
+
+.bg-warning {
+  background-color: #56070C !important;
+  color: #ffffff !important;
+}

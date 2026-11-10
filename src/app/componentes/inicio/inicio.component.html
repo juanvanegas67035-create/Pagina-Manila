@@ -1,0 +1,227 @@
+<div class="container-fluid px-lg-5 pt-5 mt-4">
+
+  <div class="p-5 mb-5 rounded-4 text-white shadow-lg border border-warning position-relative overflow-hidden manila-hero-banner">
+    
+    <div class="container-fluid py-4 px-lg-4 z-index-1">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <span class="badge bg-warning text-dark text-uppercase fw-bold px-3 py-2 mb-3 fs-6">
+            📍 GUÁTICA, RISARALDA
+          </span>
+          
+          <h1 class="display-1 fw-extrabold text-white lh-1 mb-3 text-uppercase font-monospace manila-hero-title">
+            RESTAURANTE <span class="text-warning">MANILA</span>
+          </h1>
+          <p class="fs-5 text-light text-uppercase mb-4 fw-medium manila-hero-subtitle">
+            LA EXPERIENCIA DEFINITIVA DE LA COMIDA CALLEJERA GOURMET
+          </p>
+
+          <div class="d-flex align-items-center gap-3 mb-4 bg-black bg-opacity-75 p-3 rounded-4 border border-secondary manila-badge-rating">
+            <div class="text-warning fs-4">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <div>
+              <span class="fw-bold text-light fs-5">4.9 / 5.0</span>
+              <span class="text-secondary small d-block">+1,200 reseñas satisfechas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="bg-dark p-5 rounded-4 border border-secondary my-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h3 class="h4 fw-bold text-uppercase text-warning mb-2">"¿QUIÉNES SOMOS?"</h3>
+        <p class="text-light lead mb-4">
+          <strong>Restaurante Manila</strong> nació del amor por la auténtica comida urbana. Combinamos técnicas de cocina gourmet con las recetas callejeras más icónicas de las grandes capitales del mundo.
+        </p>
+
+        <h3 class="h4 fw-bold text-uppercase text-warning mb-2">
+          ¿POR QUÉ INICIAMOS ESTE PROYECTO?
+        </h3>
+        <p class="text-light lead mb-4">
+          Iniciamos con el sueño de transformar el concepto tradicional de la comida rápida local, demostrando que una hamburguesa de calle puede tener la misma calidad, frescura y técnica que un plato de alta cocina. Queríamos crear un espacio donde cada detalle cuente, desde el pan artesanal hasta la última salsa.
+        </p>
+
+        <h3 class="h4 fw-bold text-uppercase text-warning mb-2">
+          NUESTRA MISIÓN Y PROPÓSITO
+        </h3>
+        <p class="text-light lead mb-0">
+          Nuestro propósito es brindar una experiencia gastronómica inolvidable a nuestra comunidad, utilizando ingredientes 100% frescos, pan horneado a diario y fórmulas exclusivas de la casa. Queremos ser el punto de encuentro favorito donde el sabor, la pasión y la cultura urbana se unen en un solo lugar.
+        </p>
+      </div>
+
+      <div class="col-md-6 text-center mt-4 mt-md-0">
+        <img src="https://i.pinimg.com/736x/4e/24/21/4e2421411609ffc04607e6d7e1e8e971.jpg" 
+             alt="Manila Burger" class="img-fluid rounded-4 shadow">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="p-5 rounded-4 border border-secondary my-5 manila-exclusive-section">
+    <div class="text-center mb-5">
+      <span class="text-warning font-monospace fs-5 text-uppercase">Selección Exclusiva</span>
+      <h2 class="display-5 fw-extrabold text-uppercase text-white">EL MEJOR PLATILLO & LA MEJOR BEBIDA</h2>
+      <p class="text-secondary">Nuestras recomendaciones principales</p>
+    </div>
+
+    <div class="container-fluid px-lg-5 pt-5 mt-4">
+      <div class="p-5 rounded-4 border border-secondary my-5 manila-exclusive-section">
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Tarjeta Plato Estrella -->
+          <div class="col-lg-5" *ngIf="platoEstrella">
+            <div class="card bg-dark text-white border-warning rounded-4 h-100 shadow-lg overflow-hidden">
+              <div class="position-relative">
+                <img [src]="platoEstrella.imagen" 
+                     class="card-img-top manila-card-img" 
+                     [alt]="platoEstrella.nombre">
+                <span class="badge bg-info text-dark position-absolute top-0 end-0 m-3 fs-6 fw-bold">
+                  ★ Plato estrella
+                </span>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between p-4">
+                <div>
+                  <h3 class="card-title text-warning fw-bold h4 mb-2">{{ platoEstrella.nombre }}</h3>
+                  <p class="card-text text-secondary mb-1"><strong>Tipo:</strong> {{ platoEstrella.origen }}</p>
+                  <p class="card-text text-secondary mb-3"><strong>Categoría:</strong> {{ platoEstrella.categoria }}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                  <span class="fs-4 text-success fw-bold">${{ platoEstrella.precio | number }} COP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta Bebida Estrella -->
+          <div class="col-lg-5" *ngIf="bebidaEstrella">
+            <div class="card bg-dark text-white border-warning rounded-4 h-100 shadow-lg overflow-hidden">
+              <div class="position-relative">
+                <img [src]="bebidaEstrella.imagen" 
+                     class="card-img-top manila-card-img" 
+                     [alt]="bebidaEstrella.nombre">
+                <span class="badge bg-info text-dark position-absolute top-0 end-0 m-3 fs-6 fw-bold">
+                  ★ Bebida estrella
+                </span>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between p-4">
+                <div>
+                  <h3 class="card-title text-warning fw-bold h4 mb-2">{{ bebidaEstrella.nombre }}</h3>
+                  <p class="card-text text-secondary mb-1"><strong>Tipo:</strong> {{ bebidaEstrella.tipo }}</p>
+                  <p class="card-text text-secondary mb-3"><strong>Categoría:</strong> {{ bebidaEstrella.categoria }}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                  <span class="fs-4 text-success fw-bold">${{ bebidaEstrella.precio | number }} COP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-black p-5 rounded-4 border border-secondary my-5">
+    <div class="text-center mb-5">
+      <span class="text-warning font-monospace fs-5">Comunidad Manila</span>
+      <h2 class="display-5 fw-extrabold text-uppercase text-white">LO QUE DICEN NUESTROS CLIENTES</h2>
+    </div>
+
+    <div id="carouselTestimonios" class="carousel slide position-relative px-md-5" data-bs-ride="carousel">
+      <div class="carousel-inner px-md-4">
+        
+        <div class="carousel-item active">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Qué peligro este negocio, uno dice que va a comprar una sola cosa y termina hipotecando el apetito."</p>
+                <span class="fw-bold text-warning d-block">— Mateo R.</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Dejemos los chips de Neuralink, aquí el verdadero chip que importa es el de las papas."</p>
+                <span class="fw-bold text-warning d-block">— Elon Musk</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Cada detalle demuestra el cariño que le ponen a lo que hacen."</p>
+                <span class="fw-bold text-warning d-block">— Carlos M.</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"No etiqueten a nadie, que esto se llena. jajaja"</p>
+                <span class="fw-bold text-warning d-block">— Sofía L.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Necesito hablar con el dueño. Tengo 100 millones de dólares y una idea bastante poderosa."</p>
+                <span class="fw-bold text-warning d-block">— Mr Beast.</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Esta comida pega más duro que un Montapuercos al puente."</p>
+                <span class="fw-bold text-warning d-block">— Supercell.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Ni una superbike me había dejado tan satisfecho."</p>
+                <span class="fw-bold text-warning d-block">— Sebastian Herrera</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-dark rounded-4 border border-secondary h-100 shadow">
+                <div class="text-warning mb-2">⭐⭐⭐⭐</div>
+                <p class="fst-italic small text-light">"Le iba a poner una mala reseña, pero la comida no me dio motivos para hacerlo."</p>
+                <span class="fw-bold text-warning d-block">— Usuario Anónimo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev manila-testimonial-control manila-testimonial-control-prev" type="button" data-bs-target="#carouselTestimonios" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-secondary rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next manila-testimonial-control manila-testimonial-control-next" type="button" data-bs-target="#carouselTestimonios" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-secondary rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+
+</div>

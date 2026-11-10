@@ -1,0 +1,96 @@
+.custom-navbar {
+  background-color: rgba(23, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 4px groove #56070C;
+  padding: 10px 20px;
+}
+
+.custom-toggler {
+  border: 2px solid #56070C !important;
+  background-color: #350A06;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+.custom-toggler:focus {
+  box-shadow: 0 0 10px rgba(86, 7, 12, 0.8) !important;
+  outline: none !important;
+}
+
+.custom-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap !important;
+  width: 100%;
+  max-width: 200px;
+  min-width: 140px;
+  height: 48px;
+  padding: 5px 20px !important;
+  margin: 0 auto !important;
+  color: #fff !important;
+  -webkit-text-stroke: 1px #170000;
+  text-shadow: 1px 1px 5px rgba(12, 1, 1, 0.8);
+  font-family: 'Playfair Display', serif, system-ui;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  background-color: #350A06;
+  border-radius: 30px;
+  border: 4px ridge #56070C;
+  border-bottom: 4px groove #56070C;
+  border-right: 4px groove #56070C;
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-btn:hover {
+  color: #ffffff !important;
+  background-color: #56070C !important;
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(86, 7, 12, 0.7);
+}
+
+.custom-btn.active {
+  background-color: #56070C !important;
+  color: #ffffff !important;
+  border-color: #e65c65 !important;
+  box-shadow: 0 0 12px rgba(86, 7, 12, 0.9);
+  transform: scale(1.05);
+}
+
+ul.navbar-nav {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 991px) {
+  .custom-navbar {
+    padding: 8px 15px;
+  }
+}
+
+.custom-nav-btn {
+  color: #e65c65 !important;
+  background-color: transparent !important;
+}
+
+.custom-nav-btn.active {
+  background-color: #56070C !important;
+  color: #ffffff !important;
+  border-color: #56070C !important;
+}
+
+/* Barra de navegación principal con efectos translúcidos */
+.manila-navbar {
+  background-color: rgba(23, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #56070C;
+}
+
+/* Estilo limpio para el icono de estrella junto a MANILA */
+.manila-icon {
+  color: #e65c65 !important;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,158 @@
+<div class="container py-5 mt-5 text-white">
+  
+  <div class="text-center mb-5">
+    <span class="text-warning font-monospace fs-5 text-uppercase">Restaurante Manila</span>
+    <h2 class="display-4 fw-bold text-uppercase">Realizar Tu Pedido</h2>
+    <p class="text-secondary">Ingresa tus datos y verifica los productos seleccionados antes de generar tu comprobante</p>
+  </div>
+
+  <div class="row g-5">
+    
+    <div class="col-lg-6">
+      <div class="card bg-dark border-warning p-4 shadow-lg rounded-4 h-100">
+        <h3 class="text-warning h4 fw-bold mb-4 border-bottom border-secondary pb-2">1. Datos de Quien Realiza el Pedido</h3>
+        
+        <div class="mb-3">
+          <label class="form-label text-secondary small fw-bold">NOMBRE COMPLETO</label>
+          <input type="text" class="form-control bg-transparent text-white border-secondary shadow-none py-2" placeholder="Ej: Juan David Vanegas"
+                 [(ngModel)]="pedido.cliente.nombreCompleto" name="nombreCompleto">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-secondary small fw-bold">CELULAR</label>
+          <input type="tel" class="form-control bg-transparent text-white border-secondary shadow-none py-2" placeholder="Ej: 3101234567"
+                 [(ngModel)]="pedido.cliente.celular" name="celular" maxlength="10">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-secondary small fw-bold">DIRECCIÓN DE ENTREGA</label>
+          <input type="text" class="form-control bg-transparent text-white border-secondary shadow-none py-2" placeholder="Ej: Barrio Centro, Guática"
+                 [(ngModel)]="pedido.cliente.direccion" name="direccion">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card bg-dark border-warning p-4 shadow-lg rounded-4 h-100 d-flex flex-column justify-content-between">
+        <div>
+          <h3 class="text-warning h4 fw-bold mb-4 border-bottom border-secondary pb-2">2. Resumen del Pedido</h3>
+
+          <p class="text-secondary text-center py-4" *ngIf="pedido.items.length === 0">
+            Aún no has agregado productos. Ve a <strong>Comidas</strong> o <strong>Bebidas</strong> y pulsa "Pedir".
+          </p>
+          
+          <div class="table-responsive" *ngIf="pedido.items.length > 0">
+            <table class="table table-dark table-borderless align-middle">
+              <thead>
+                <tr class="text-secondary small border-bottom border-secondary">
+                  <th>PRODUCTO</th>
+                  <th>CANT.</th>
+                  <th class="text-end">TOTAL</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of pedido.items" class="border-bottom border-secondary">
+                  <td>
+                    <span class="fw-bold d-block">{{ item.nombre }}</span>
+                    <small class="text-secondary">${{ item.precio | number }} COP</small>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <button type="button" class="btn btn-outline-warning btn-sm px-2 py-0" (click)="cambiarCantidad(item.id, -1)">-</button>
+                      <span class="badge bg-secondary text-light px-2 py-1">{{ item.cantidad }}</span>
+                      <button type="button" class="btn btn-outline-warning btn-sm px-2 py-0" (click)="cambiarCantidad(item.id, 1)">+</button>
+                    </div>
+                  </td>
+                  <td class="text-end text-success fw-bold">
+                    ${{ item.calcularSubtotal() | number }} COP
+                  </td>
+                  <td class="text-end">
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="quitar(item.id)" aria-label="Quitar">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pt-4 border-top border-secondary">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="fs-5 fw-bold text-uppercase">Total a Pagar:</span>
+            <span class="fs-3 text-success fw-bold">${{ pedido.calcularTotal() | number }} COP</span>
+          </div>
+
+          <div class="alert alert-danger py-2 small" *ngIf="error">{{ error }}</div>
+
+          <button type="button" class="btn btn-warning w-100 fw-bold py-3 rounded-pill text-dark shadow" (click)="realizarPedido()">
+            REALIZAR PEDIDO
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="formato-pedido" class="mt-5" *ngIf="realizado">
+    <div class="card bg-white text-dark shadow-lg rounded-4 overflow-hidden mx-auto" style="max-width: 800px;">
+
+      <div class="bg-black p-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-warning text-dark fw-bold d-flex align-items-center justify-content-center fs-3" style="width: 60px; height: 60px;">M</div>
+          <div>
+            <h3 class="text-warning fw-bold mb-0">MANILA</h3>
+            <small class="text-light">Restaurante - Formato de pedido</small>
+          </div>
+        </div>
+        <span class="text-light small">Fecha: {{ pedido.fecha | date:'dd/MM/yyyy' }}</span>
+      </div>
+
+      <div class="p-4">
+        <h5 class="fw-bold">DATOS DEL CLIENTE</h5>
+        <p class="mb-1"><strong>Nombre:</strong> {{ pedido.cliente.nombreCompleto }}</p>
+        <p class="mb-1"><strong>Celular:</strong> {{ pedido.cliente.celular }}</p>
+        <p class="mb-4"><strong>Dirección:</strong> {{ pedido.cliente.direccion }}</p>
+
+        <h5 class="fw-bold">LISTA DEL PEDIDO</h5>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Tipo</th>
+                <th class="text-center">Cant.</th>
+                <th class="text-end">Precio unit.</th>
+                <th class="text-end">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pedido.items">
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.tipo }}</td>
+                <td class="text-center">{{ item.cantidad }}</td>
+                <td class="text-end">${{ item.precio | number }}</td>
+                <td class="text-end">${{ item.calcularSubtotal() | number }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="text-end fw-bold mt-3">TOTAL A PAGAR: ${{ pedido.calcularTotal() | number }} COP</h4>
+      </div>
+
+      <div class="p-4 bg-light d-flex flex-wrap gap-2 justify-content-center">
+        <button type="button" class="btn btn-warning fw-bold px-4 rounded-pill" (click)="descargarPdf()">
+          <i class="fa-solid fa-file-pdf me-2"></i>DESCARGAR PDF
+        </button>
+        <button type="button" class="btn btn-outline-dark fw-bold px-4 rounded-pill" (click)="nuevoPedido()">
+          NUEVO PEDIDO
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
