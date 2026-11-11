@@ -19,8 +19,6 @@ export class ApiService {
       });
   }
 
-  // ---------- COMIDAS ----------
-
   comidaPorNombre(nombre: string) {
     return this.obtener(this.urlComidas + "/search.php?s=" + encodeURIComponent(nombre));
   }
@@ -41,8 +39,6 @@ export class ApiService {
   comidaAleatoria() {
     return this.obtener(this.urlComidas + "/random.php");
   }
-
-  // ---------- BEBIDAS ----------
 
   bebidaPorNombre(nombre: string) {
     return this.obtener(this.urlBebidas + "/search.php?s=" + encodeURIComponent(nombre));

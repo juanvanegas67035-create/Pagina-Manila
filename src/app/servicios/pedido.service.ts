@@ -6,7 +6,6 @@ import { Pedido } from '../entidades/pedido';
 })
 export class PedidoService {
 
-  // Un solo pedido compartido entre Comidas, Bebidas, Pedido y el menú
   pedido: Pedido = new Pedido();
 
   constructor() { }
